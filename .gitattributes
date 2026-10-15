@@ -1,0 +1,7 @@
+# core.autocrlf is true on the machine this was last worked on, so
+# a checkout can rewrite line endings. A Makefile with CRLF line
+# endings breaks on Linux: the carriage return becomes part of the
+# last argument of every recipe line.
+* text=auto
+Makefile text eol=lf
+*.sh     text eol=lf

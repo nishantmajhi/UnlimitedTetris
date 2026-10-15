@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The second half builds the suite against the first commit,
+          # fetched with git show.
+          fetch-depth: 0
+      # Finds g++ on PATH. Nothing is drawn: OpenGL is stubbed out.
+      - run: tests\run.ps1
+        shell: powershell
